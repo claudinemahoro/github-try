@@ -1,0 +1,56 @@
+<div class="jumbotron">
+  <h1>search</h1>
+      <form>
+          Username:<br>
+            <input type="text" name="name" class="form-control" placeholder="" [(ngModel)]="username" name="username" (keyup)="findProfile()">
+           
+            <br>   
+      </form>
+         <p class="jumbotron"></p>  
+</div>
+       
+  <div class="container">
+      <div class="row">
+      <div class="col-md-5">
+          <div *ngIf="profile">
+       
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img  src={{profile.avatar_url}} width="200" height="200">
+                    </div>
+                  <!-- <div>
+                      {{profile.name}} <span>({{profile.login}})</span>
+                      <span *ngIf="profile.company"><br>works at {{profile.company}}</span>
+                      <span *ngIf="profile.location"><br>place : {{profile.location}}</span><br>
+                      <span *ngIf="profile.hireable"> Hireable status: To be hired.</span>
+                  </div> -->
+              
+                     <div class="col-sm-6">
+                       <div>
+                         <p>
+                           <span class="label label-default">{{profile.repos_url}} public_Repos</span>
+                           <br><span class="label label-success">{{profile.followers_url}} followers</span>
+                           <br><span class="label label-default">{{profile.following_url}} following</span>
+                           <!-- <br><span class="label success">{{profile.public_gists}} public_gists</span> -->
+                       <br><a href="{{profile.html_url}}" class="btn btn-success">Visit account</a>
+                          </p>
+                       </div>
+                     </div>
+                  </div>
+            </div>  
+        </div>
+     </div>
+  
+            <div class="col-md-7">
+                <div *ngFor="let repo of repos" class="card">
+                    <p class="card-header">
+                      {{repo.name| uppercase}} <a href="{{repo.html_url}}" target="_blank" class="btn btn-info">More Info</a>
+                     <br>This repo was created at {{repo.created_at | date}}</p>
+                       </div>
+            
+      </div>
+ 
+  </div>
+      <footer class="blockquote-footer">Claudine@2020</footer>
+  </div>
